@@ -77,6 +77,7 @@ public class Main : MonoBehaviour
         MorseMap.Add('Z', new List<int> { 1, 1, 0, 0 });
 
         time = 60f / (float)bpm;
+        Time.timeScale = bpm / 240f;
 
         timer = time;
         ticktimer = time;
@@ -236,10 +237,12 @@ public class Main : MonoBehaviour
         var currentMorse = MorseMap[currentLetter];
         var morse = currentMorse[index];
 
+        var spikeHeightOffset = -0.4f;
+
         if (morse == 0)
         {
             timer += time;
-            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, -0.25f, 0));
+            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, spikeHeightOffset, 0));
             audioSource.PlayOneShot(shortmorse);
 
             if (index < currentMorse.Count - 1)
@@ -249,9 +252,9 @@ public class Main : MonoBehaviour
         } else
         {
             timer += 3 * time;
-            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, -0.25f, 0));
-            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + time * Global.Speed, -0.25f, 0));
-            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + 2 * time * Global.Speed, -0.25f, 0));
+            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, spikeHeightOffset, 0));
+            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + time * Global.Speed, spikeHeightOffset, 0));
+            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + 2 * time * Global.Speed, spikeHeightOffset, 0));
             audioSource.PlayOneShot(longmorse);
 
             if (index < currentMorse.Count - 1)
