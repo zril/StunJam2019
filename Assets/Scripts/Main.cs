@@ -21,9 +21,14 @@ public class Main : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip shortmorse;
     public AudioClip longmorse;
+    public AudioClip letter;
+    public AudioClip word;
     public AudioClip tick1;
+    public AudioClip tick1_bis;
     public AudioClip tick2;
+    public AudioClip tick2_bis;
     public AudioClip tick4;
+    public AudioClip tick4_bis;
 
     // Start is called before the first frame update
     void Start()
@@ -77,16 +82,20 @@ public class Main : MonoBehaviour
         {
             ticktimer += time;
             audioSource.PlayOneShot(tick1);
+            audioSource.PlayOneShot(tick1_bis);
 
             if (tickCounter == 0)
             {
                 audioSource.PlayOneShot(tick2);
+                audioSource.PlayOneShot(tick2_bis);
                 audioSource.PlayOneShot(tick4);
+                audioSource.PlayOneShot(tick4_bis);
             }
 
             if (tickCounter == 2)
             {
                 audioSource.PlayOneShot(tick2);
+                audioSource.PlayOneShot(tick2_bis);
             }
 
             tickCounter++;
@@ -116,11 +125,15 @@ public class Main : MonoBehaviour
                             currentText = currentText.Substring(1, currentText.Length - 1);
 
                             timer += 6 * time;
+
+                            audioSource.PlayOneShot(shortmorse);
                         }
                         else
                         {
                             timer += 2 * time;
                             Instantiate(Resources.Load("Prefabs/Letter"), new Vector3(0, 1, 0), Quaternion.identity);
+
+                            audioSource.PlayOneShot(shortmorse);
                         }
                     }
                 }
