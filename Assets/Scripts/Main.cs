@@ -16,11 +16,14 @@ public class Main : MonoBehaviour
 
     private float timer;
     private float ticktimer;
+    private int tickCounter;
 
     private AudioSource audioSource;
     public AudioClip shortmorse;
     public AudioClip longmorse;
-    public AudioClip tick;
+    public AudioClip tick1;
+    public AudioClip tick2;
+    public AudioClip tick4;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,7 @@ public class Main : MonoBehaviour
 
         timer = time;
         ticktimer = time;
+        tickCounter = 0;
         currentText = text;
         currentIndex = 0;
 
@@ -72,7 +76,24 @@ public class Main : MonoBehaviour
         if (ticktimer < 0)
         {
             ticktimer += time;
-            audioSource.PlayOneShot(tick);
+            audioSource.PlayOneShot(tick1);
+
+            if (tickCounter == 0)
+            {
+                audioSource.PlayOneShot(tick2);
+                audioSource.PlayOneShot(tick4);
+            }
+
+            if (tickCounter == 2)
+            {
+                audioSource.PlayOneShot(tick2);
+            }
+
+            tickCounter++;
+            if (tickCounter >= 4)
+            {
+                tickCounter = 0;
+            }
         }
 
         if (timer < 0)
