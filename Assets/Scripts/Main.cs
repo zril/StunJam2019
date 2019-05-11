@@ -43,7 +43,8 @@ public class Main : MonoBehaviour
     public AudioClip tick86;
     public AudioClip tick87;
 
-    private float spawnOffsetX = 10;
+    private float spawnOffsetX = 10.5f;
+    private float soundDelay = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -206,14 +207,16 @@ public class Main : MonoBehaviour
 
                             timer += 6 * time;
 
-                            audioSource.PlayOneShot(word);
+                            //audioSource.PlayOneShot(word);
+                            StartCoroutine(PlaySoundWithDelay(word, soundDelay));
                         }
                         else
                         {
                             timer += 2 * time;
 
                             InstantiateObject("Prefabs/Letter", new Vector3(spawnOffsetX, 1, 0));
-                            audioSource.PlayOneShot(letter);
+                            //audioSource.PlayOneShot(letter);
+                            StartCoroutine(PlaySoundWithDelay(letter, soundDelay));
                         }
                     }
                 }
@@ -243,7 +246,8 @@ public class Main : MonoBehaviour
         {
             timer += time;
             InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, spikeHeightOffset, 0));
-            audioSource.PlayOneShot(shortmorse);
+            StartCoroutine(PlaySoundWithDelay(shortmorse, soundDelay));
+            //audioSource.PlayOneShot(shortmorse);
 
             if (index < currentMorse.Count - 1)
             {
@@ -255,7 +259,8 @@ public class Main : MonoBehaviour
             InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, spikeHeightOffset, 0));
             InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + time * Global.Speed, spikeHeightOffset, 0));
             InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + 2 * time * Global.Speed, spikeHeightOffset, 0));
-            audioSource.PlayOneShot(longmorse);
+            //audioSource.PlayOneShot(longmorse);
+            StartCoroutine(PlaySoundWithDelay(longmorse, soundDelay));
 
             if (index < currentMorse.Count - 1)
             {
@@ -268,5 +273,11 @@ public class Main : MonoBehaviour
     {
         var obj = Instantiate(Resources.Load(prefab), position, Quaternion.identity);
         Destroy(obj, 8f);
+    }
+
+    private IEnumerator PlaySoundWithDelay(AudioClip clip, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.PlayOneShot(clip);
     }
 }
