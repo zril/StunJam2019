@@ -14,8 +14,12 @@ public class Player : MonoBehaviour
     private float jumpForceInit = 5f;
     private float jumpForce = 0.28f;
 
-    private GameObject camera;
-    private AudioSource audio;
+    private float smashTimer;
+    private float smashTime = 0.25f;
+    private bool smashing = false;
+
+    private GameObject maincamera;
+    private AudioSource audiosource;
 
 
     // Start is called before the first frame update
@@ -24,14 +28,15 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         onGround = true;
 
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
-        audio = camera.GetComponent<AudioSource>();
+        maincamera = GameObject.FindGameObjectWithTag("MainCamera");
+        audiosource = maincamera.GetComponent<AudioSource>();
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //jump
         if (Input.GetButtonDown("Button1") && onGround)
         {
             onGround = false;
@@ -56,6 +61,26 @@ public class Player : MonoBehaviour
         {
             jumpTimer = jumpTime;
         }
+
+        //smash
+        if (Input.GetButtonDown("Button2"))
+        {
+            smashTimer = smashTime;
+            smashing = true;
+
+            transform.position = transform.position + new Vector3(0.25f, 0, 0);
+        }
+
+        if (smashing)
+        {
+            smashTimer -= Time.fixedDeltaTime;
+            if (smashTimer < 0)
+            {
+                smashing = false;
+                transform.position = transform.position + new Vector3(-0.25f, 0, 0);
+            }
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -68,14 +93,20 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Obstacle")
+        if (collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Letter")
         {
-            var mire = GameObject.FindGameObjectWithTag("Mire");
-            mire.GetComponent<SpriteRenderer>().enabled = true;
-            StartCoroutine(MireTimer(0.1f));
+            if (collider.gameObject.tag == "Letter" && smashing)
+            {
+                Destroy(collider.gameObject);
+            } else
+            {
+                var mire = GameObject.FindGameObjectWithTag("Mire");
+                mire.GetComponent<SpriteRenderer>().enabled = true;
+                StartCoroutine(MireTimer(0.1f));
 
-            var clip = camera.GetComponent<Main>().hit;
-            audio.PlayOneShot(clip);
+                var clip = maincamera.GetComponent<Main>().hit;
+                audiosource.PlayOneShot(clip);
+            }
         }
 
         if (collider.gameObject.tag == "Bonus")
