@@ -15,8 +15,11 @@ public class Player : MonoBehaviour
     private float jumpForce = 0.28f;
 
     private float smashTimer;
+    private float rollTimer;
     private float smashTime = 0.25f;
+    private float rollTime = 0.4f;
     private bool smashing = false;
+    private bool rolling = false;
 
     private GameObject maincamera;
     private AudioSource audiosource;
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         //jump
-        if (Input.GetButtonDown("Button1") && onGround)
+        if (Input.GetButtonDown("Button1") && onGround && !rolling && !smashing)
         {
             onGround = false;
             jumpTimer = 0;
@@ -48,13 +51,14 @@ public class Player : MonoBehaviour
             animator.SetBool("Jump", true);
         }
 
-        if (Input.GetButton("Button1") && onGround)
+        if (Input.GetButton("Button1") && onGround && !rolling && !smashing)
         {
             onGround = false;
             jumpTimer = 0;
             rb.AddForce(transform.up * jumpForceInit, ForceMode2D.Impulse);
 
             animator.SetBool("Jump", true);
+            animator.SetBool("Rejump", true);
         }
 
         if (Input.GetButton("Button1") && jumpTimer < jumpTime && !onGround)
@@ -85,7 +89,21 @@ public class Player : MonoBehaviour
             {
                 smashing = false;
                 animator.SetBool("Smash", false);
+                rolling = true;
+                animator.SetBool("Roll", true);
+                rollTimer = rollTime;
                 transform.position = transform.position + new Vector3(-0.25f, 0, 0);
+            }
+        }
+
+        if (rolling)
+        {
+            rollTimer -= Time.fixedDeltaTime;
+
+            if (rollTimer < 0)
+            {
+                rolling = false;
+                animator.SetBool("Roll", false);
             }
         }
 
@@ -97,6 +115,7 @@ public class Player : MonoBehaviour
         {
             onGround = true;
             animator.SetBool("Jump", false);
+            animator.SetBool("Rejump", false);
         }
     }
 

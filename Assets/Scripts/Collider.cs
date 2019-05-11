@@ -38,7 +38,7 @@ public class Collider : MonoBehaviour
 
                 var mire = GameObject.FindGameObjectWithTag("Mire");
                 mire.GetComponent<SpriteRenderer>().enabled = true;
-                StartCoroutine(MireTimer(0.1f));
+                StartCoroutine(MireTimer(0.05f));
             }
         }
 
