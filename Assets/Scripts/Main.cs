@@ -262,7 +262,8 @@ public class Main : MonoBehaviour
         var currentMorse = MorseMap[currentLetter];
         var morse = currentMorse[index];
 
-        var spikeHeightOffset = -0.4f;
+        //var spikeHeightOffset = -0.4f;
+        var spikeHeightOffset = 0.1f;
 
         if (morse == 0)
         {
@@ -272,7 +273,7 @@ public class Main : MonoBehaviour
 
             if (index < currentMorse.Count - 1)
             {
-                InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + time * Global.Speed, 0, 0));
+                InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + time * Global.Speed, 0.3f, 0));
             }
         } else
         {
@@ -284,7 +285,7 @@ public class Main : MonoBehaviour
 
             if (index < currentMorse.Count - 1)
             {
-                InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + 3 * time * Global.Speed, 0, 0));
+                InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + 3 * time * Global.Speed, 0.3f, 0));
             }
         }
     }

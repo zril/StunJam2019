@@ -1,0 +1,317 @@
+fileFormatVersion: 2
+guid: 4b8cf65c61187d840a06f2c10c726014
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8967567178219322770
+    second: saut_0
+  - first:
+      213: -4863817181220591668
+    second: saut_1
+  - first:
+      213: -9097234847532871721
+    second: saut_2
+  - first:
+      213: -8637600838961801384
+    second: saut_3
+  - first:
+      213: 3564155992283080447
+    second: saut_4
+  - first:
+      213: -6579412407491333161
+    second: saut_5
+  - first:
+      213: -5428355669786779886
+    second: saut_6
+  - first:
+      213: -109592120856501563
+    second: saut_7
+  - first:
+      213: -4542240139571905276
+    second: saut_8
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 768
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: saut_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60002244f304eeb4794ca23637b77b2a
+      internalID: -8967567178219322770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_1
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1716247f199f494438f8be00d9ee4546
+      internalID: -4863817181220591668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_2
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e69a5b1e4a70448bfbc03aa9a3ae25
+      internalID: -9097234847532871721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_3
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414149964b9ec1e4a86e55eaa6bcb15b
+      internalID: -8637600838961801384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_4
+      rect:
+        serializedVersion: 2
+        x: 5600
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4befcd4ab3b6a2049960f0bb16ee4ee3
+      internalID: 3564155992283080447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_5
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c0a6b92489ae346b500e4d323f96a8
+      internalID: -6579412407491333161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_6
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdbfeceaff45c9143a1d484b5a608084
+      internalID: -5428355669786779886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_7
+      rect:
+        serializedVersion: 2
+        x: 9800
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a32e503d85b52564599950d0874ed004
+      internalID: -109592120856501563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_8
+      rect:
+        serializedVersion: 2
+        x: 11200
+        y: 0
+        width: 1400
+        height: 2100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd950c834e736b42af3345e38064cef
+      internalID: -4542240139571905276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a1dc4b7d3548d6d46a7dc1bdcb031ed2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

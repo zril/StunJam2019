@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
     private GameObject maincamera;
     private AudioSource audiosource;
+    private Animator animator;
 
 
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
 
         maincamera = GameObject.FindGameObjectWithTag("MainCamera");
         audiosource = maincamera.GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour
             onGround = false;
             jumpTimer = 0;
             rb.AddForce(transform.up * jumpForceInit, ForceMode2D.Impulse);
+
+            animator.SetBool("Jump", true);
         }
 
         if (Input.GetButton("Button1") && onGround)
@@ -49,6 +53,8 @@ public class Player : MonoBehaviour
             onGround = false;
             jumpTimer = 0;
             rb.AddForce(transform.up * jumpForceInit, ForceMode2D.Impulse);
+
+            animator.SetBool("Jump", true);
         }
 
         if (Input.GetButton("Button1") && jumpTimer < jumpTime && !onGround)
@@ -63,10 +69,11 @@ public class Player : MonoBehaviour
         }
 
         //smash
-        if (Input.GetButtonDown("Button2"))
+        if (Input.GetButtonDown("Button2") && !smashing)
         {
             smashTimer = smashTime;
             smashing = true;
+            animator.SetBool("Smash", true);
 
             transform.position = transform.position + new Vector3(0.25f, 0, 0);
         }
@@ -77,6 +84,7 @@ public class Player : MonoBehaviour
             if (smashTimer < 0)
             {
                 smashing = false;
+                animator.SetBool("Smash", false);
                 transform.position = transform.position + new Vector3(-0.25f, 0, 0);
             }
         }
@@ -88,38 +96,14 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             onGround = true;
+            animator.SetBool("Jump", false);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    public bool GetSmashing()
     {
-        if (collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Letter")
-        {
-            if (collider.gameObject.tag == "Letter" && smashing)
-            {
-                Destroy(collider.gameObject);
-            } else
-            {
-                var mire = GameObject.FindGameObjectWithTag("Mire");
-                mire.GetComponent<SpriteRenderer>().enabled = true;
-                StartCoroutine(MireTimer(0.1f));
-
-                var clip = maincamera.GetComponent<Main>().hit;
-                audiosource.PlayOneShot(clip);
-            }
-        }
-
-        if (collider.gameObject.tag == "Bonus")
-        {
-            Destroy(collider.gameObject);
-        }
+        return smashing;
     }
 
-
-    private IEnumerator MireTimer(float mireTime)
-    {
-        yield return new WaitForSeconds(mireTime);
-        var mire = GameObject.FindGameObjectWithTag("Mire");
-        mire.GetComponent<SpriteRenderer>().enabled = false;
-    }
+    
 }
