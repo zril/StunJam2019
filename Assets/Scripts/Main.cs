@@ -39,6 +39,8 @@ public class Main : MonoBehaviour
     public AudioClip tick43;
     public AudioClip tick43_bis;
 
+    private float spawnOffsetX = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -156,19 +158,19 @@ public class Main : MonoBehaviour
                     {
                         if (currentText[0] == ' ')
                         {
-                            Instantiate(Resources.Load("Prefabs/Word"), new Vector3(0, 1, 0), Quaternion.identity);
+                            Instantiate(Resources.Load("Prefabs/Word"), new Vector3(spawnOffsetX, 1, 0), Quaternion.identity);
                             currentText = currentText.Substring(1, currentText.Length - 1);
 
                             timer += 6 * time;
 
-                            audioSource.PlayOneShot(shortmorse);
+                            audioSource.PlayOneShot(word);
                         }
                         else
                         {
                             timer += 2 * time;
-                            Instantiate(Resources.Load("Prefabs/Letter"), new Vector3(0, 1, 0), Quaternion.identity);
+                            Instantiate(Resources.Load("Prefabs/Letter"), new Vector3(spawnOffsetX, 1, 0), Quaternion.identity);
 
-                            audioSource.PlayOneShot(shortmorse);
+                            audioSource.PlayOneShot(letter);
                         }
                     }
                 }
@@ -179,7 +181,7 @@ public class Main : MonoBehaviour
                 }
             } else
             {
-                Instantiate(Resources.Load("Prefabs/Void"), new Vector3(0, 1, 0), Quaternion.identity);
+                Instantiate(Resources.Load("Prefabs/Void"), new Vector3(spawnOffsetX, 1, 0), Quaternion.identity);
 
                 timer += 6 * time;
             }
@@ -192,7 +194,7 @@ public class Main : MonoBehaviour
         var currentMorse = MorseMap[currentLetter];
         var morse = currentMorse[index];
 
-        Instantiate(Resources.Load("Prefabs/Square"), new Vector3(0, morse * 2, 0), Quaternion.identity);
+        Instantiate(Resources.Load("Prefabs/Square"), new Vector3(spawnOffsetX, morse * 2, 0), Quaternion.identity);
         if (morse == 0)
         {
             timer += time;
