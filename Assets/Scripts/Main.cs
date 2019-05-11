@@ -46,8 +46,8 @@ public class Main : MonoBehaviour
     
     public AudioClip hit;
 
-    private float spawnOffsetX = 11.25f;
-    private float soundDelay = 3f;
+    private float spawnOffsetX = 14.13f;
+    private float soundDelay = 4f;
 
     // Start is called before the first frame update
     void Start()
