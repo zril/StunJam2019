@@ -29,7 +29,7 @@ public class Main : MonoBehaviour
     public AudioClip tick2;
     public AudioClip tick2_bis;
     public AudioClip tick3;
-    public AudioClip tick3_bis;
+    public AudioClip tick6;
     public AudioClip tick4;
     public AudioClip tick4_bis;
     public AudioClip tick41;
@@ -38,6 +38,10 @@ public class Main : MonoBehaviour
     public AudioClip tick42_bis;
     public AudioClip tick43;
     public AudioClip tick43_bis;
+    public AudioClip tick84;
+    public AudioClip tick85;
+    public AudioClip tick86;
+    public AudioClip tick87;
 
     private float spawnOffsetX = 10;
 
@@ -123,20 +127,58 @@ public class Main : MonoBehaviour
                 audioSource.PlayOneShot(tick43_bis);
             }
 
+            if (tickCounter == 4)
+            {
+                audioSource.PlayOneShot(tick2);
+                audioSource.PlayOneShot(tick2_bis);
+                audioSource.PlayOneShot(tick4);
+                audioSource.PlayOneShot(tick4_bis);
+                audioSource.PlayOneShot(tick84);
+            }
+
+            if (tickCounter == 5)
+            {
+                audioSource.PlayOneShot(tick41);
+                audioSource.PlayOneShot(tick41_bis);
+                audioSource.PlayOneShot(tick85);
+            }
+
+            if (tickCounter == 6)
+            {
+                audioSource.PlayOneShot(tick2);
+                audioSource.PlayOneShot(tick2_bis);
+                audioSource.PlayOneShot(tick42);
+                audioSource.PlayOneShot(tick42_bis);
+                audioSource.PlayOneShot(tick86);
+            }
+
+            if (tickCounter == 7)
+            {
+                audioSource.PlayOneShot(tick43);
+                audioSource.PlayOneShot(tick43_bis);
+                audioSource.PlayOneShot(tick87);
+            }
+
             tickCounter++;
-            if (tickCounter >= 4)
+            if (tickCounter >= 8)
             {
                 tickCounter = 0;
             }
 
+
             if (tickCounter3 == 0)
             {
                 audioSource.PlayOneShot(tick3);
-                audioSource.PlayOneShot(tick3_bis);
+            }
+
+            if (tickCounter3 == 3)
+            {
+                audioSource.PlayOneShot(tick3);
+                audioSource.PlayOneShot(tick6);
             }
 
             tickCounter3++;
-            if (tickCounter3 >= 3)
+            if (tickCounter3 >= 6)
             {
                 tickCounter3 = 0;
             }
