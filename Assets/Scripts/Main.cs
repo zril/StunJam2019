@@ -17,6 +17,7 @@ public class Main : MonoBehaviour
     private float timer;
     private float ticktimer;
     private int tickCounter;
+    private int tickCounter3;
 
     private AudioSource audioSource;
     public AudioClip shortmorse;
@@ -27,8 +28,16 @@ public class Main : MonoBehaviour
     public AudioClip tick1_bis;
     public AudioClip tick2;
     public AudioClip tick2_bis;
+    public AudioClip tick3;
+    public AudioClip tick3_bis;
     public AudioClip tick4;
     public AudioClip tick4_bis;
+    public AudioClip tick41;
+    public AudioClip tick41_bis;
+    public AudioClip tick42;
+    public AudioClip tick42_bis;
+    public AudioClip tick43;
+    public AudioClip tick43_bis;
 
     // Start is called before the first frame update
     void Start()
@@ -92,16 +101,42 @@ public class Main : MonoBehaviour
                 audioSource.PlayOneShot(tick4_bis);
             }
 
+            if (tickCounter == 1)
+            {
+                audioSource.PlayOneShot(tick41);
+                audioSource.PlayOneShot(tick41_bis);
+            }
+
             if (tickCounter == 2)
             {
                 audioSource.PlayOneShot(tick2);
                 audioSource.PlayOneShot(tick2_bis);
+                audioSource.PlayOneShot(tick42);
+                audioSource.PlayOneShot(tick42_bis);
+            }
+
+            if (tickCounter == 3)
+            {
+                audioSource.PlayOneShot(tick43);
+                audioSource.PlayOneShot(tick43_bis);
             }
 
             tickCounter++;
             if (tickCounter >= 4)
             {
                 tickCounter = 0;
+            }
+
+            if (tickCounter3 == 0)
+            {
+                audioSource.PlayOneShot(tick3);
+                audioSource.PlayOneShot(tick3_bis);
+            }
+
+            tickCounter3++;
+            if (tickCounter3 >= 3)
+            {
+                tickCounter3 = 0;
             }
         }
 
