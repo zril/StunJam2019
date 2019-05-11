@@ -7,13 +7,15 @@ public class Main : MonoBehaviour
     Dictionary<char, List<int>> MorseMap;
 
     public string text;
+    public int bpm;
+
+    private float time;
 
     private string currentText;
     private int currentIndex;
 
     private float timer;
     private float ticktimer;
-    private float time = 0.25f;
 
     private AudioSource audioSource;
     private AudioClip shortmorse;
@@ -51,7 +53,7 @@ public class Main : MonoBehaviour
         MorseMap.Add('Y', new List<int> { 1, 0, 1, 1 });
         MorseMap.Add('Z', new List<int> { 1, 1, 0, 0 });
 
-        
+        time = 60f / (float)bpm;
 
         timer = time;
         ticktimer = time;

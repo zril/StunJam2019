@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: le chocolat
+  bpm: 240
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
