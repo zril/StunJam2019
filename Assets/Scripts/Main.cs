@@ -43,7 +43,7 @@ public class Main : MonoBehaviour
     public AudioClip tick86;
     public AudioClip tick87;
 
-    private float spawnOffsetX = 10.5f;
+    private float spawnOffsetX = 11f;
     private float soundDelay = 3f;
 
     // Start is called before the first frame update
