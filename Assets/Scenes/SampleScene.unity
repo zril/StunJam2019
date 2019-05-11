@@ -193,7 +193,7 @@ MonoBehaviour:
   tick2: {fileID: 0}
   tick2_bis: {fileID: 0}
   tick3: {fileID: 0}
-  tick6: {fileID: 0}
+  tick6: {fileID: 8300000, guid: 5997a5df373118b41b6643cc642497b3, type: 3}
   tick4: {fileID: 8300000, guid: bb5cda01a1003bc46aa7573816bf346e, type: 3}
   tick4_bis: {fileID: 0}
   tick41: {fileID: 0}
@@ -206,7 +206,7 @@ MonoBehaviour:
   tick85: {fileID: 0}
   tick86: {fileID: 0}
   tick87: {fileID: 8300000, guid: caa098571b6e49044aeebf18fa6ed381, type: 3}
-  hit: {fileID: 0}
+  hit: {fileID: 8300000, guid: 935214f79cc464d4e853bcd289a6f17e, type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
