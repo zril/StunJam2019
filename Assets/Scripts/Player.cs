@@ -14,12 +14,19 @@ public class Player : MonoBehaviour
     private float jumpForceInit = 5f;
     private float jumpForce = 0.28f;
 
+    private GameObject camera;
+    private AudioSource audio;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         onGround = true;
+
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        audio = camera.GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -66,6 +73,9 @@ public class Player : MonoBehaviour
             var mire = GameObject.FindGameObjectWithTag("Mire");
             mire.GetComponent<SpriteRenderer>().enabled = true;
             StartCoroutine(MireTimer(0.1f));
+
+            var clip = camera.GetComponent<Main>().hit;
+            audio.PlayOneShot(clip);
         }
 
         if (collider.gameObject.tag == "Bonus")

@@ -42,6 +42,8 @@ public class Main : MonoBehaviour
     public AudioClip tick85;
     public AudioClip tick86;
     public AudioClip tick87;
+    
+    public AudioClip hit;
 
     private float spawnOffsetX = 11f;
     private float soundDelay = 3f;
@@ -206,8 +208,7 @@ public class Main : MonoBehaviour
                             currentText = currentText.Substring(1, currentText.Length - 1);
 
                             timer += 6 * time;
-
-                            //audioSource.PlayOneShot(word);
+                            
                             StartCoroutine(PlaySoundWithDelay(word, soundDelay));
                         }
                         else
@@ -215,7 +216,6 @@ public class Main : MonoBehaviour
                             timer += 2 * time;
 
                             InstantiateObject("Prefabs/Letter", new Vector3(spawnOffsetX, 1, 0));
-                            //audioSource.PlayOneShot(letter);
                             StartCoroutine(PlaySoundWithDelay(letter, soundDelay));
                         }
                     }
@@ -247,7 +247,6 @@ public class Main : MonoBehaviour
             timer += time;
             InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, spikeHeightOffset, 0));
             StartCoroutine(PlaySoundWithDelay(shortmorse, soundDelay));
-            //audioSource.PlayOneShot(shortmorse);
 
             if (index < currentMorse.Count - 1)
             {
@@ -259,7 +258,6 @@ public class Main : MonoBehaviour
             InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, spikeHeightOffset, 0));
             InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + time * Global.Speed, spikeHeightOffset, 0));
             InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + 2 * time * Global.Speed, spikeHeightOffset, 0));
-            //audioSource.PlayOneShot(longmorse);
             StartCoroutine(PlaySoundWithDelay(longmorse, soundDelay));
 
             if (index < currentMorse.Count - 1)
