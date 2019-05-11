@@ -9,7 +9,6 @@ TagManager:
   - Bonus
   - Mire
   - Letter
-  - CurrentText
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
@@ -211,11 +210,6 @@ public class Main : MonoBehaviour
                             timer += 6 * time;
                             
                             StartCoroutine(PlaySoundWithDelay(word, soundDelay));
-
-                            while (currentText[0] == ' ')
-                            {
-                                currentText = currentText.Substring(1, currentText.Length - 1);
-                            }
                         }
                         else
                         {
@@ -238,22 +232,6 @@ public class Main : MonoBehaviour
                 timer += 6 * time;
             }
         }
-
-        //UI
-        var textui = GameObject.FindGameObjectWithTag("CurrentText");
-        var text1 = "";
-        var text2 = "";
-        if (currentText.Length > 1)
-        {
-
-            text1 = currentText.Substring(0, 1);
-            text2 = currentText.Substring(1, currentText.Length - 1);
-        } else if (currentText.Length == 1)
-        {
-            text1 = currentText;
-        }
-
-        textui.GetComponent<Text>().text = "<color=#ff0000ff>" +  text1 + "</color>" + text2;
     }
 
     private void Generate(string text, int index)
