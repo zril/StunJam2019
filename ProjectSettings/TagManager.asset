@@ -9,6 +9,8 @@ TagManager:
   - Bonus
   - Mire
   - Letter
+  - CurrentText
+  - Collider
   layers:
   - Default
   - TransparentFX

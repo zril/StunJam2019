@@ -13,6 +13,7 @@ public class Main : MonoBehaviour
     private float time;
 
     private string currentText;
+    private string currentTextUI;
     private int currentIndex;
 
     private float timer;
@@ -87,6 +88,7 @@ public class Main : MonoBehaviour
         ticktimer = time;
         tickCounter = 0;
         currentText = text;
+        currentTextUI = text;
         currentIndex = 0;
 
         audioSource = GetComponent<AudioSource>();
@@ -200,6 +202,7 @@ public class Main : MonoBehaviour
                 {
                     currentIndex = 0;
                     currentText = currentText.Substring(1, currentText.Length - 1);
+                    StartCoroutine(RemoveLetterUI(soundDelay));
 
                     if (currentText.Length > 0)
                     {
@@ -207,6 +210,7 @@ public class Main : MonoBehaviour
                         {
                             InstantiateObject("Prefabs/Word", new Vector3(spawnOffsetX, 1, 0));
                             currentText = currentText.Substring(1, currentText.Length - 1);
+                            StartCoroutine(RemoveLetterUI(soundDelay));
 
                             timer += 6 * time;
                             
@@ -215,13 +219,14 @@ public class Main : MonoBehaviour
                             while (currentText[0] == ' ')
                             {
                                 currentText = currentText.Substring(1, currentText.Length - 1);
+                                StartCoroutine(RemoveLetterUI(soundDelay));
                             }
                         }
                         else
                         {
                             timer += 2 * time;
 
-                            InstantiateObject("Prefabs/Letter", new Vector3(spawnOffsetX, 1, 0));
+                            InstantiateObject("Prefabs/Letter", new Vector3(spawnOffsetX, 0.5f, 0));
                             StartCoroutine(PlaySoundWithDelay(letter, soundDelay));
                         }
                     }
@@ -243,15 +248,14 @@ public class Main : MonoBehaviour
         var textui = GameObject.FindGameObjectWithTag("CurrentText");
         var text1 = "";
         var text2 = "";
-        if (currentText.Length > 1)
+        if (currentTextUI.Length > 1)
         {
-
-            text1 = currentText.Substring(0, 1);
-            text2 = currentText.Substring(1, currentText.Length - 1);
+            text1 = currentTextUI.Substring(0, 1);
+            text2 = currentTextUI.Substring(1, currentTextUI.Length - 1);
         }
-        else if (currentText.Length == 1)
+        else if (currentTextUI.Length == 1)
         {
-            text1 = currentText;
+            text1 = currentTextUI;
         }
 
         textui.GetComponent<Text>().text = "<color=#ff0000ff>" + text1 + "</color>" + text2;
@@ -301,5 +305,11 @@ public class Main : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         audioSource.PlayOneShot(clip);
+    }
+
+    private IEnumerator RemoveLetterUI(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currentTextUI = currentTextUI.Substring(1, currentTextUI.Length - 1);
     }
 }

@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private GameObject maincamera;
     private AudioSource audiosource;
     private Animator animator;
+    private GameObject collider;
 
 
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
         maincamera = GameObject.FindGameObjectWithTag("MainCamera");
         audiosource = maincamera.GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
-
+        collider = GameObject.FindGameObjectWithTag("Collider");
     }
 
     // Update is called once per frame
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
             smashing = true;
             animator.SetBool("Smash", true);
 
-            transform.position = transform.position + new Vector3(0.25f, 0, 0);
+            collider.transform.position = collider.transform.position + new Vector3(0.3f, 0, 0);
         }
 
         if (smashing)
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour
                 rolling = true;
                 animator.SetBool("Roll", true);
                 rollTimer = rollTime;
-                transform.position = transform.position + new Vector3(-0.25f, 0, 0);
+                collider.transform.position = collider.transform.position - new Vector3(0.3f, 0, 0);
             }
         }
 
