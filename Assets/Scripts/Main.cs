@@ -6,13 +6,19 @@ public class Main : MonoBehaviour
 {
     Dictionary<char, List<int>> MorseMap;
 
-    private string text = "ab cde";
+    public string text;
 
     private string currentText;
     private int currentIndex;
 
     private float timer;
+    private float ticktimer;
     private float time = 0.25f;
+
+    private AudioSource audioSource;
+    private AudioClip shortmorse;
+    private AudioClip longmorse;
+    private AudioClip tick;
 
     // Start is called before the first frame update
     void Start()
@@ -48,43 +54,66 @@ public class Main : MonoBehaviour
         
 
         timer = time;
+        ticktimer = time;
         currentText = text;
         currentIndex = 0;
+
+        audioSource = GetComponent<AudioSource>();
+        tick = Resources.Load("Sounds/tick") as AudioClip;
+        shortmorse = Resources.Load("Sounds/short") as AudioClip;
+        longmorse = Resources.Load("Sounds/long") as AudioClip;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
+        ticktimer -= Time.deltaTime;
+
+        if (ticktimer < 0)
+        {
+            ticktimer += time;
+            audioSource.PlayOneShot(tick);
+        }
 
         if (timer < 0)
         {
             timer += time;
             if (currentText.Length > 0)
             {
-                if (currentText[0] == ' ')
+                var currentLetter = currentText.ToUpper()[0];
+                var currentMorse = MorseMap[currentLetter];
+                if (currentIndex >= currentMorse.Count)
                 {
-                    Instantiate(Resources.Load("Prefabs/Word"), new Vector3(0, 1, 0), Quaternion.identity);
+                    currentIndex = 0;
                     currentText = currentText.Substring(1, currentText.Length - 1);
 
-                    timer += 7 * time;
-                } else
-                {
-                    var currentLetter = currentText.ToUpper()[0];
-                    var currentMorse = MorseMap[currentLetter];
-                    if (currentIndex >= currentMorse.Count)
+                    if (currentText.Length > 0)
                     {
-                        currentIndex = 0;
-                        currentText = currentText.Substring(1, currentText.Length - 1);
-                        timer += 3 * time;
-                        Instantiate(Resources.Load("Prefabs/Letter"), new Vector3(0, 1, 0), Quaternion.identity);
-                    }
-                    else
-                    {
-                        Generate(currentText, currentIndex);
-                        currentIndex++;
+                        if (currentText[0] == ' ')
+                        {
+                            Instantiate(Resources.Load("Prefabs/Word"), new Vector3(0, 1, 0), Quaternion.identity);
+                            currentText = currentText.Substring(1, currentText.Length - 1);
+
+                            timer += 6 * time;
+                        }
+                        else
+                        {
+                            timer += 2 * time;
+                            Instantiate(Resources.Load("Prefabs/Letter"), new Vector3(0, 1, 0), Quaternion.identity);
+                        }
                     }
                 }
+                else
+                {
+                    Generate(currentText, currentIndex);
+                    currentIndex++;
+                }
+            } else
+            {
+                Instantiate(Resources.Load("Prefabs/Void"), new Vector3(0, 1, 0), Quaternion.identity);
+
+                timer += 6 * time;
             }
         }
     }
@@ -99,9 +128,11 @@ public class Main : MonoBehaviour
         if (morse == 0)
         {
             timer += time;
+            audioSource.PlayOneShot(shortmorse);
         } else
         {
             timer += 3 * time;
+            audioSource.PlayOneShot(longmorse);
         }
     }
 }
