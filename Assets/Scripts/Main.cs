@@ -18,9 +18,9 @@ public class Main : MonoBehaviour
     private float ticktimer;
 
     private AudioSource audioSource;
-    private AudioClip shortmorse;
-    private AudioClip longmorse;
-    private AudioClip tick;
+    public AudioClip shortmorse;
+    public AudioClip longmorse;
+    public AudioClip tick;
 
     // Start is called before the first frame update
     void Start()
@@ -61,9 +61,6 @@ public class Main : MonoBehaviour
         currentIndex = 0;
 
         audioSource = GetComponent<AudioSource>();
-        tick = Resources.Load("Sounds/tick") as AudioClip;
-        shortmorse = Resources.Load("Sounds/short") as AudioClip;
-        longmorse = Resources.Load("Sounds/long") as AudioClip;
     }
 
     // Update is called once per frame
