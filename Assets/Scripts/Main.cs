@@ -200,7 +200,7 @@ public class Main : MonoBehaviour
                     {
                         if (currentText[0] == ' ')
                         {
-                            Instantiate(Resources.Load("Prefabs/Word"), new Vector3(spawnOffsetX, 1, 0), Quaternion.identity);
+                            InstantiateObject("Prefabs/Word", new Vector3(spawnOffsetX, 1, 0));
                             currentText = currentText.Substring(1, currentText.Length - 1);
 
                             timer += 6 * time;
@@ -210,8 +210,8 @@ public class Main : MonoBehaviour
                         else
                         {
                             timer += 2 * time;
-                            Instantiate(Resources.Load("Prefabs/Letter"), new Vector3(spawnOffsetX, 1, 0), Quaternion.identity);
 
+                            InstantiateObject("Prefabs/Letter", new Vector3(spawnOffsetX, 1, 0));
                             audioSource.PlayOneShot(letter);
                         }
                     }
@@ -223,7 +223,7 @@ public class Main : MonoBehaviour
                 }
             } else
             {
-                Instantiate(Resources.Load("Prefabs/Void"), new Vector3(spawnOffsetX, 1, 0), Quaternion.identity);
+                InstantiateObject("Prefabs/Void", new Vector3(spawnOffsetX, 1, 0));
 
                 timer += 6 * time;
             }
@@ -236,15 +236,34 @@ public class Main : MonoBehaviour
         var currentMorse = MorseMap[currentLetter];
         var morse = currentMorse[index];
 
-        Instantiate(Resources.Load("Prefabs/Square"), new Vector3(spawnOffsetX, morse * 2, 0), Quaternion.identity);
         if (morse == 0)
         {
             timer += time;
+            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, -0.25f, 0));
             audioSource.PlayOneShot(shortmorse);
+
+            if (index < currentMorse.Count - 1)
+            {
+                InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + time * Global.Speed, 0, 0));
+            }
         } else
         {
             timer += 3 * time;
+            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX, -0.25f, 0));
+            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + time * Global.Speed, -0.25f, 0));
+            InstantiateObject("Prefabs/Spike", new Vector3(spawnOffsetX + 2 * time * Global.Speed, -0.25f, 0));
             audioSource.PlayOneShot(longmorse);
+
+            if (index < currentMorse.Count - 1)
+            {
+                InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + 3 * time * Global.Speed, 0, 0));
+            }
         }
+    }
+
+    private void InstantiateObject(string prefab, Vector3 position)
+    {
+        var obj = Instantiate(Resources.Load(prefab), position, Quaternion.identity);
+        Destroy(obj, 8f);
     }
 }
