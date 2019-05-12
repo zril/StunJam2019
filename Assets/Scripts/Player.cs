@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //jump
         if (Input.GetButtonDown("Button1") && onGround && !rolling && !smashing)
@@ -83,11 +83,11 @@ public class Player : MonoBehaviour
 
             collider.transform.position = collider.transform.position + new Vector3(0.3f, 0, 0);
         }
-
+        
         if (smashing)
         {
             smashTimer -= Time.fixedDeltaTime;
-            if (smashTimer < 0)
+            if (smashTimer <= 0)
             {
                 smashing = false;
                 animator.SetBool("Smash", false);
