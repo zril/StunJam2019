@@ -171,7 +171,7 @@ MonoBehaviour:
   shortmorse: {fileID: 8300000, guid: a41ade8b6a0f7ab42b9c5b36abec11eb, type: 3}
   longmorse: {fileID: 8300000, guid: 719970ac7e5b65447bb7a237246f51fb, type: 3}
   letter: {fileID: 8300000, guid: 1a93d46c5cd0fb64ca60b1247d7781c1, type: 3}
-  word: {fileID: 8300000, guid: cbd83cdac3b0c544b90947d270068f40, type: 3}
+  word: {fileID: 8300000, guid: 25832aa9088af6749bf9afa3933992e7, type: 3}
   tick1: {fileID: 8300000, guid: df5b0795663a99447a9179bba45a6acc, type: 3}
   tick1_bis: {fileID: 0}
   tick2: {fileID: 0}
