@@ -87,6 +87,21 @@ public class Main : MonoBehaviour
         MorseMap.Add('Y', new List<int> { 1, 0, 1, 1 });
         MorseMap.Add('Z', new List<int> { 1, 1, 0, 0 });
         MorseMap.Add('\'', new List<int> { 0, 1, 1, 1, 1, 0 });
+        MorseMap.Add('É', new List<int> { 0, 0, 1, 0, 0 });
+        MorseMap.Add('È', new List<int> { 0, 1, 0, 0, 1 });
+        MorseMap.Add('À', new List<int> { 0, 1, 1, 0, 1 });
+        MorseMap.Add('Ù', new List<int> { 0, 0, 1 });
+        MorseMap.Add('1', new List<int> { 0, 1, 1, 1, 1 });
+        MorseMap.Add('2', new List<int> { 0, 0, 1, 1, 1 });
+        MorseMap.Add('3', new List<int> { 0, 0, 0, 1, 1 });
+        MorseMap.Add('4', new List<int> { 0, 0, 0, 0, 1 });
+        MorseMap.Add('5', new List<int> { 0, 0, 0, 0, 0 });
+        MorseMap.Add('6', new List<int> { 1, 0, 0, 0, 0 });
+        MorseMap.Add('7', new List<int> { 1, 1, 0, 0, 0 });
+        MorseMap.Add('8', new List<int> { 1, 1, 1, 0, 0 });
+        MorseMap.Add('9', new List<int> { 1, 1, 1, 1, 0 });
+        MorseMap.Add('0', new List<int> { 1, 1, 1, 1, 1 });
+
 
         time = 60f / (float)bpm;
         Time.timeScale = bpm / 240f;
@@ -286,14 +301,32 @@ public class Main : MonoBehaviour
         {
             var b = false;
             var ponct = false;
+
+            if (c >= '0' && c <= '9')
+            {
+                b = true;
+            }
+
             if (c >= 'a' && c <= 'z')
             {
                 b = true;
             }
+
             if (c >= 'A' && c <= 'Z')
             {
                 b = true;
             }
+
+            if (c == 'é' || c == 'è' || c == 'à' || c == 'ù')
+            {
+                b = true;
+            }
+
+            if (c == 'É' || c == 'È' || c == 'À' || c == 'Ù')
+            {
+                b = true;
+            }
+
             if (c == ' ' || c == ',' || c == '.' || c == '\'')
             {
                 b = true;
