@@ -51,6 +51,11 @@ public class Main : MonoBehaviour
     private float spawnOffsetX = 14.13f;
     private float soundDelay = 4f;
 
+    private float groundSpawnTimer;
+    private float groundSpawnTime = 3.40f / 3f;
+    private bool groundinit = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +99,15 @@ public class Main : MonoBehaviour
         currentIndex = 0;
 
         audioSource = GetComponent<AudioSource>();
+
+        //ground
+        groundSpawnTimer = 0;
+
+        for (int i = 1; i < 6; i++)
+        {
+            var obj1 = Instantiate(Resources.Load("Prefabs/Ground"), new Vector3(spawnOffsetX - i * groundSpawnTime * Global.Speed, -1, 0), Quaternion.identity);
+            Destroy(obj1, 8f);
+        }
     }
 
     // Update is called once per frame
@@ -101,7 +115,18 @@ public class Main : MonoBehaviour
     {
         timer -= Time.deltaTime;
         ticktimer -= Time.deltaTime;
+        groundSpawnTimer -= Time.deltaTime;
 
+        //ground
+        if (groundSpawnTimer < 0)
+        {
+            groundSpawnTimer += groundSpawnTime;
+            var obj = Instantiate(Resources.Load("Prefabs/Ground"), new Vector3(spawnOffsetX, -1, 0), Quaternion.identity);
+            Destroy(obj, 8f);
+        }
+        
+
+        //tick
         if (ticktimer < 0)
         {
             ticktimer += time;
@@ -193,6 +218,8 @@ public class Main : MonoBehaviour
             }
         }
 
+
+        //level
         if (timer < 0)
         {
             timer += time;
