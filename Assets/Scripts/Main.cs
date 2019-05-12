@@ -375,7 +375,7 @@ public class Main : MonoBehaviour
         var morse = currentMorse[index];
 
         //var spikeHeightOffset = -0.4f;
-        var spikeHeightOffset = 0.1f;
+        var spikeHeightOffset = -0.1f;
 
         if (morse == 0)
         {
