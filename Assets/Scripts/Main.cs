@@ -58,7 +58,9 @@ public class Main : MonoBehaviour
 
     private float groundSpawnTimer;
     private float groundSpawnTime = 6.9f / 3f;
-    private bool groundinit = false;
+
+    private float backgroundSpawnTimer;
+    private float backgroundSpawnTime = 28f / 1.5f;
 
 
     // Start is called before the first frame update
@@ -128,6 +130,14 @@ public class Main : MonoBehaviour
             var obj1 = Instantiate(Resources.Load("Prefabs/Ground"), new Vector3(3 + spawnOffsetX - i * groundSpawnTime * Global.Speed, -1.5f, 0), Quaternion.identity);
             Destroy(obj1, 10f);
         }
+
+        //background
+        backgroundSpawnTimer = 0;
+        for (int i = 1; i < 3; i++)
+        {
+            var obj2 = Instantiate(Resources.Load("Prefabs/BG_UL"), new Vector3(10 + spawnOffsetX - i * backgroundSpawnTime * 1.5f, 2, 0), Quaternion.identity);
+            Destroy(obj2, 50f);
+        }
     }
 
     // Update is called once per frame
@@ -136,6 +146,7 @@ public class Main : MonoBehaviour
         timer -= Time.deltaTime;
         ticktimer -= Time.deltaTime;
         groundSpawnTimer -= Time.deltaTime;
+        backgroundSpawnTimer -= Time.deltaTime;
 
         //ground
         if (groundSpawnTimer < 0)
@@ -144,7 +155,14 @@ public class Main : MonoBehaviour
             var obj = Instantiate(Resources.Load("Prefabs/Ground"), new Vector3(3 + spawnOffsetX, -1.5f, 0), Quaternion.identity);
             Destroy(obj, 10f);
         }
-        
+
+        //background
+        if (backgroundSpawnTimer < 0)
+        {
+            backgroundSpawnTimer += backgroundSpawnTime;
+            var obj = Instantiate(Resources.Load("Prefabs/BG_UL"), new Vector3(10 + spawnOffsetX, 2, 0), Quaternion.identity);
+            Destroy(obj, 50f);
+        }
 
         //tick
         if (ticktimer < 0)
