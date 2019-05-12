@@ -47,6 +47,11 @@ public class Main : MonoBehaviour
     public AudioClip tick87;
     
     public AudioClip hit;
+    public AudioClip jump;
+    public AudioClip smash;
+    public AudioClip destroy;
+    public AudioClip bonus;
+    public AudioClip power;
 
     private float spawnOffsetX = 14.13f;
     private float soundDelay = 4f;

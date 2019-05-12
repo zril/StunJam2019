@@ -51,6 +51,9 @@ public class Player : MonoBehaviour
             rb.AddForce(transform.up * jumpForceInit, ForceMode2D.Impulse);
 
             animator.SetBool("Jump", true);
+
+            var clip = maincamera.GetComponent<Main>().jump;
+            audiosource.PlayOneShot(clip);
         }
 
         if (Input.GetButton("Button1") && onGround && !rolling && !smashing)
@@ -61,6 +64,9 @@ public class Player : MonoBehaviour
 
             animator.SetBool("Jump", true);
             animator.SetBool("Rejump", true);
+
+            var clip = maincamera.GetComponent<Main>().jump;
+            audiosource.PlayOneShot(clip);
         }
 
         if (Input.GetButton("Button1") && jumpTimer < jumpTime && !onGround)
@@ -82,6 +88,9 @@ public class Player : MonoBehaviour
             animator.SetBool("Smash", true);
 
             collider.transform.position = collider.transform.position + new Vector3(0.3f, 0, 0);
+
+            var clip = maincamera.GetComponent<Main>().smash;
+            audiosource.PlayOneShot(clip);
         }
         
         if (smashing)

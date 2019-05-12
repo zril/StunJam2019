@@ -47,6 +47,9 @@ public class Collider : MonoBehaviour
                 UpdateUI();
                 Destroy(collider.gameObject);
 
+                var clip = maincamera.GetComponent<Main>().destroy;
+                audiosource.PlayOneShot(clip);
+
                 if (powerCounter == 5)
                 {
                     var mire = GameObject.FindGameObjectWithTag("Mire");
@@ -54,6 +57,9 @@ public class Collider : MonoBehaviour
                     mire.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                     powerCounter = 0;
+
+                    var clip2 = maincamera.GetComponent<Main>().power;
+                    audiosource.PlayOneShot(clip2);
                 }
             }
             else
@@ -93,6 +99,9 @@ public class Collider : MonoBehaviour
             UpdateUI();
 
             Destroy(collider.gameObject);
+
+            var clip = maincamera.GetComponent<Main>().bonus;
+            audiosource.PlayOneShot(clip);
         }
     }
 
