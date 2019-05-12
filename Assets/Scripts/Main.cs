@@ -52,7 +52,7 @@ public class Main : MonoBehaviour
     private float soundDelay = 4f;
 
     private float groundSpawnTimer;
-    private float groundSpawnTime = 3.40f / 3f;
+    private float groundSpawnTime = 6.9f / 3f;
     private bool groundinit = false;
 
 
@@ -105,8 +105,8 @@ public class Main : MonoBehaviour
 
         for (int i = 1; i < 6; i++)
         {
-            var obj1 = Instantiate(Resources.Load("Prefabs/Ground"), new Vector3(spawnOffsetX - i * groundSpawnTime * Global.Speed, -1, 0), Quaternion.identity);
-            Destroy(obj1, 8f);
+            var obj1 = Instantiate(Resources.Load("Prefabs/Ground"), new Vector3(3 + spawnOffsetX - i * groundSpawnTime * Global.Speed, -1.5f, 0), Quaternion.identity);
+            Destroy(obj1, 10f);
         }
     }
 
@@ -121,8 +121,8 @@ public class Main : MonoBehaviour
         if (groundSpawnTimer < 0)
         {
             groundSpawnTimer += groundSpawnTime;
-            var obj = Instantiate(Resources.Load("Prefabs/Ground"), new Vector3(spawnOffsetX, -1, 0), Quaternion.identity);
-            Destroy(obj, 8f);
+            var obj = Instantiate(Resources.Load("Prefabs/Ground"), new Vector3(3 + spawnOffsetX, -1.5f, 0), Quaternion.identity);
+            Destroy(obj, 10f);
         }
         
 
