@@ -66,23 +66,26 @@ public class Collider : MonoBehaviour
             }
             else
             {
-                combo = 0;
-                multiplier = 1;
-                powerCounter--;
-                if (powerCounter < 0)
+                if (!(collider.gameObject.tag == "Letter" && collider.gameObject.GetComponent<Animator>().GetBool("destroy")))
                 {
-                    powerCounter = 0;
+                    combo = 0;
+                    multiplier = 1;
+                    powerCounter--;
+                    if (powerCounter < 0)
+                    {
+                        powerCounter = 0;
+                    }
+
+                    UpdateUI();
+
+                    var clip = maincamera.GetComponent<Main>().hit;
+                    audiosource.PlayOneShot(clip);
+
+                    var mire = GameObject.FindGameObjectWithTag("Mire");
+                    mire.GetComponent<SpriteRenderer>().enabled = true;
+                    mire.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    StartCoroutine(MireTimer(0.05f));
                 }
-
-                UpdateUI();
-
-                var clip = maincamera.GetComponent<Main>().hit;
-                audiosource.PlayOneShot(clip);
-
-                var mire = GameObject.FindGameObjectWithTag("Mire");
-                mire.GetComponent<SpriteRenderer>().enabled = true;
-                mire.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                StartCoroutine(MireTimer(0.05f));
             }
         }
 
