@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Collider : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class Collider : MonoBehaviour
     private GameObject maincamera;
     private AudioSource audiosource;
     private GameObject player;
+    
+    private int score;
+    private int multiplier;
+    private int combo;
+
+    private int powerCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +22,11 @@ public class Collider : MonoBehaviour
         maincamera = GameObject.FindGameObjectWithTag("MainCamera");
         audiosource = maincamera.GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
+
+        score = 0;
+        multiplier = 1;
+        combo = 0;
+        powerCounter = 0;
     }
 
     // Update is called once per frame
@@ -29,10 +41,17 @@ public class Collider : MonoBehaviour
         {
             if (collider.gameObject.tag == "Letter" && player.GetComponent<Player>().GetSmashing())
             {
+                powerCounter++;
                 Destroy(collider.gameObject);
             }
             else
             {
+                combo = 0;
+                multiplier = 1;
+                powerCounter--;
+
+                UpdateUI();
+
                 var clip = maincamera.GetComponent<Main>().hit;
                 audiosource.PlayOneShot(clip);
 
@@ -45,6 +64,16 @@ public class Collider : MonoBehaviour
 
         if (collider.gameObject.tag == "Bonus")
         {
+            score += 10 * multiplier;
+            combo++;
+            if (combo == 3)
+            {
+                combo = 0;
+                multiplier++;
+            }
+
+            UpdateUI();
+
             Destroy(collider.gameObject);
         }
     }
@@ -56,5 +85,14 @@ public class Collider : MonoBehaviour
         var mire = GameObject.FindGameObjectWithTag("Mire");
         mire.GetComponent<SpriteRenderer>().enabled = false;
         mire.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    private void UpdateUI()
+    {
+        var scoreUI = GameObject.FindGameObjectWithTag("Score");
+        scoreUI.GetComponent<Text>().text = score.ToString();
+
+        var multiplierUI = GameObject.FindGameObjectWithTag("Multiplier");
+        multiplierUI.GetComponent<Text>().text = multiplier.ToString() + "X";
     }
 }

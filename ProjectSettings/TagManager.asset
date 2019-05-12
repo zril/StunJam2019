@@ -11,6 +11,8 @@ TagManager:
   - Letter
   - CurrentText
   - Collider
+  - Score
+  - Multiplier
   layers:
   - Default
   - TransparentFX
