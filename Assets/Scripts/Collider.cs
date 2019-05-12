@@ -52,6 +52,8 @@ public class Collider : MonoBehaviour
                     var mire = GameObject.FindGameObjectWithTag("Mire");
                     mire.GetComponent<SpriteRenderer>().enabled = true;
                     mire.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+                    powerCounter = 0;
                 }
             }
             else

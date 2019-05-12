@@ -208,7 +208,7 @@ public class Main : MonoBehaviour
                     {
                         if (currentText[0] == ' ')
                         {
-                            InstantiateObject("Prefabs/Word", new Vector3(spawnOffsetX, 1, 0));
+                            //InstantiateObject("Prefabs/Word", new Vector3(spawnOffsetX, 1, 0));
                             currentText = currentText.Substring(1, currentText.Length - 1);
                             StartCoroutine(RemoveLetterUI(soundDelay));
 
@@ -238,9 +238,33 @@ public class Main : MonoBehaviour
                 }
             } else
             {
-                InstantiateObject("Prefabs/Void", new Vector3(spawnOffsetX, 1, 0));
+                //InstantiateObject("Prefabs/Void", new Vector3(spawnOffsetX, 1, 0));
 
                 timer += 6 * time;
+            }
+        }
+
+
+        //text input
+
+        var inputstring = Input.inputString;
+        var inputchars = inputstring.ToCharArray();
+        foreach (char c in inputchars)
+        {
+            var b = false;
+            if (c >= 'a' && c <= 'z')
+            {
+                b = true;
+            }
+            if (c >= 'A' && c <= 'Z')
+            {
+                b = true;
+            }
+
+            if (b)
+            {
+                currentText = currentText + c;
+                currentTextUI = currentTextUI + c;
             }
         }
 
