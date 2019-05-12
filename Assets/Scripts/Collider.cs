@@ -27,6 +27,8 @@ public class Collider : MonoBehaviour
         multiplier = 1;
         combo = 0;
         powerCounter = 0;
+
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -42,13 +44,25 @@ public class Collider : MonoBehaviour
             if (collider.gameObject.tag == "Letter" && player.GetComponent<Player>().GetSmashing())
             {
                 powerCounter++;
+                UpdateUI();
                 Destroy(collider.gameObject);
+
+                if (powerCounter == 5)
+                {
+                    var mire = GameObject.FindGameObjectWithTag("Mire");
+                    mire.GetComponent<SpriteRenderer>().enabled = true;
+                    mire.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                }
             }
             else
             {
                 combo = 0;
                 multiplier = 1;
                 powerCounter--;
+                if (powerCounter < 0)
+                {
+                    powerCounter = 0;
+                }
 
                 UpdateUI();
 
@@ -94,5 +108,8 @@ public class Collider : MonoBehaviour
 
         var multiplierUI = GameObject.FindGameObjectWithTag("Multiplier");
         multiplierUI.GetComponent<Text>().text = multiplier.ToString() + "X";
+
+        var powerbarUI = GameObject.FindGameObjectWithTag("PowerBar");
+        powerbarUI.GetComponent<Image>().fillAmount = 0.20f * powerCounter;
     }
 }

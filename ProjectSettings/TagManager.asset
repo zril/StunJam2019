@@ -13,6 +13,7 @@ TagManager:
   - Collider
   - Score
   - Multiplier
+  - PowerBar
   layers:
   - Default
   - TransparentFX
