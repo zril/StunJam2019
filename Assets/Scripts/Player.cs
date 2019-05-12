@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private float jumpTimer;
 
     private float jumpTime = 1f;
-    private float jumpForceInit = 5f;
+    private float jumpForceInit = 4.8f;
     private float jumpForce = 0.28f;
 
     private float smashTimer;
