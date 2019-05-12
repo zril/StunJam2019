@@ -160,10 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0089a23a3664c54db1b6f94c6ab4d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: vezgi gzeutgh izgerug
+  text: deux mille points
   bpm: 240
-  shortmorse: {fileID: 8300000, guid: 1093992658f375a4fac0375decd4e792, type: 3}
-  longmorse: {fileID: 8300000, guid: 7c6b8c52cf9c41141bf57e50a569fd21, type: 3}
+  shortmorse: {fileID: 8300000, guid: a41ade8b6a0f7ab42b9c5b36abec11eb, type: 3}
+  longmorse: {fileID: 8300000, guid: 719970ac7e5b65447bb7a237246f51fb, type: 3}
   letter: {fileID: 8300000, guid: 1a93d46c5cd0fb64ca60b1247d7781c1, type: 3}
   word: {fileID: 8300000, guid: af5d3527d66d31d4f900c8433383a77a, type: 3}
   tick1: {fileID: 8300000, guid: df5b0795663a99447a9179bba45a6acc, type: 3}
