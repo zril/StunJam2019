@@ -249,7 +249,7 @@ public class Main : MonoBehaviour
                             
                             StartCoroutine(PlaySoundWithDelay(word, soundDelay));
 
-                            while (currentText[0] == ' ')
+                            while (currentText.Length > 0 && currentText[0] == ' ')
                             {
                                 currentText = currentText.Substring(1, currentText.Length - 1);
                                 StartCoroutine(RemoveLetterUI(soundDelay));
