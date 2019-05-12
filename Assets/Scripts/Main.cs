@@ -348,6 +348,11 @@ public class Main : MonoBehaviour
         {
             text1 = currentTextUI.Substring(0, 1);
             text2 = currentTextUI.Substring(1, currentTextUI.Length - 1);
+
+            if (currentTextUI.Length > 45)
+            {
+                text2 = currentTextUI.Substring(1, 45) + "...";
+            }
         }
         else if (currentTextUI.Length == 1)
         {
