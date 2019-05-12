@@ -80,7 +80,9 @@ public class Collider : MonoBehaviour
 
         if (collider.gameObject.tag == "Bonus")
         {
-            score += 10 * multiplier;
+            var value = collider.gameObject.GetComponent<Bonus>().scoreValue;
+
+            score += value * multiplier;
             combo++;
             if (combo == 3)
             {

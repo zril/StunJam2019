@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -80,6 +81,7 @@ public class Main : MonoBehaviour
         MorseMap.Add('X', new List<int> { 1, 0, 0, 1 });
         MorseMap.Add('Y', new List<int> { 1, 0, 1, 1 });
         MorseMap.Add('Z', new List<int> { 1, 1, 0, 0 });
+        MorseMap.Add('\'', new List<int> { 0, 1, 1, 1, 1, 0 });
 
         time = 60f / (float)bpm;
         Time.timeScale = bpm / 240f;
@@ -206,9 +208,13 @@ public class Main : MonoBehaviour
 
                     if (currentText.Length > 0)
                     {
-                        if (currentText[0] == ' ')
+                        if (currentText[0] == ' ' || currentText[0] == ',' || currentText[0] == '.')
                         {
                             //InstantiateObject("Prefabs/Word", new Vector3(spawnOffsetX, 1, 0));
+                            InstantiateObject("Prefabs/Circle2", new Vector3(spawnOffsetX + 1 * time * Global.Speed, 1.5f, 0));
+                            InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + 2 * time * Global.Speed, 1.5f, 0));
+                            InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + 3 * time * Global.Speed, 1.5f, 0));
+                            InstantiateObject("Prefabs/Circle2", new Vector3(spawnOffsetX + 4 * time * Global.Speed, 1.5f, 0));
                             currentText = currentText.Substring(1, currentText.Length - 1);
                             StartCoroutine(RemoveLetterUI(soundDelay));
 
@@ -252,6 +258,7 @@ public class Main : MonoBehaviour
         foreach (char c in inputchars)
         {
             var b = false;
+            var ponct = false;
             if (c >= 'a' && c <= 'z')
             {
                 b = true;
@@ -260,8 +267,13 @@ public class Main : MonoBehaviour
             {
                 b = true;
             }
+            if (c == ' ' || c == ',' || c == '.' || c == '\'')
+            {
+                b = true;
+                ponct = true;
+            }
 
-            if (b)
+            if (b && !(ponct && currentText.Length == 0))
             {
                 currentText = currentText + c;
                 currentTextUI = currentTextUI + c;
@@ -287,6 +299,7 @@ public class Main : MonoBehaviour
 
     private void Generate(string text, int index)
     {
+        var majuscule = Char.IsUpper(text[0]);
         var currentLetter = text.ToUpper()[0];
         var currentMorse = MorseMap[currentLetter];
         var morse = currentMorse[index];
@@ -302,7 +315,12 @@ public class Main : MonoBehaviour
 
             if (index < currentMorse.Count - 1)
             {
-                InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + time * Global.Speed, 0.3f, 0));
+                var prefab = "Circle";
+                if (majuscule)
+                {
+                    prefab = "Circle2";
+                }
+                InstantiateObject("Prefabs/" + prefab, new Vector3(spawnOffsetX + time * Global.Speed, 0.3f, 0));
             }
         } else
         {
@@ -314,7 +332,12 @@ public class Main : MonoBehaviour
 
             if (index < currentMorse.Count - 1)
             {
-                InstantiateObject("Prefabs/Circle", new Vector3(spawnOffsetX + 3 * time * Global.Speed, 0.3f, 0));
+                var prefab = "Circle";
+                if (majuscule)
+                {
+                    prefab = "Circle2";
+                }
+                InstantiateObject("Prefabs/" + prefab, new Vector3(spawnOffsetX + 3 * time * Global.Speed, 0.3f, 0));
             }
         }
     }

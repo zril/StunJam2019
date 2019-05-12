@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4630003222681679009}
   - component: {fileID: 6456618292845322986}
   - component: {fileID: -933268119552838236}
-  - component: {fileID: -4646273017764710722}
+  - component: {fileID: 922599945738969397}
   m_Layer: 9
-  m_Name: Circle
+  m_Name: Circle2
   m_TagString: Bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9bb1870cb501b124a95a22ec83e8ca11, type: 3}
-  m_Color: {r: 1, g: 0.9600449, b: 0.0047169924, a: 1}
+  m_Color: {r: 1, g: 0.07144833, b: 0.0039215684, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -110,7 +110,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-4646273017764710722
+--- !u!114 &922599945738969397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5d22ee23ba0154883055d22d4f6a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 10
+  scoreValue: 20

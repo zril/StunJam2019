@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     private float smashTimer;
     private float rollTimer;
     private float smashTime = 0.25f;
-    private float rollTime = 0.4f;
+    //private float rollTime = 0.4f;
+    private float rollTime = 0.0f;
     private bool smashing = false;
     private bool rolling = false;
 
