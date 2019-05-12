@@ -191,6 +191,11 @@ MonoBehaviour:
   tick86: {fileID: 0}
   tick87: {fileID: 8300000, guid: 852099df9705cc64487df7acfad5fdb3, type: 3}
   hit: {fileID: 8300000, guid: 935214f79cc464d4e853bcd289a6f17e, type: 3}
+  jump: {fileID: 0}
+  smash: {fileID: 0}
+  destroy: {fileID: 0}
+  bonus: {fileID: 0}
+  power: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

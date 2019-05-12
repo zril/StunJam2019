@@ -279,7 +279,7 @@ public class Main : MonoBehaviour
                         {
                             timer += 2 * time;
 
-                            InstantiateObject("Prefabs/Letter", new Vector3(spawnOffsetX + 1 * time * Global.Speed, 0.5f, 0));
+                            InstantiateObject("Prefabs/Letter", new Vector3(spawnOffsetX + 1 * time * Global.Speed, 1.1f, 0));
                             StartCoroutine(PlaySoundWithDelay(letter, soundDelay + time));
                         }
                     }

@@ -45,7 +45,9 @@ public class Collider : MonoBehaviour
             {
                 powerCounter++;
                 UpdateUI();
-                Destroy(collider.gameObject);
+                //Destroy(collider.gameObject);
+
+                collider.gameObject.GetComponent<Animator>().SetBool("destroy", true);
 
                 var clip = maincamera.GetComponent<Main>().destroy;
                 audiosource.PlayOneShot(clip);
