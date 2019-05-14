@@ -53,11 +53,11 @@ public class Main : MonoBehaviour
     public AudioClip bonus;
     public AudioClip power;
 
-    private float spawnOffsetX = 14.13f;
-    private float soundDelay = 4f;
+    private float spawnOffsetX = 12f + Global.Speed * 0.71f;
+    private float soundDelay = 12f / Global.Speed;
 
     private float groundSpawnTimer;
-    private float groundSpawnTime = 6.9f / 3f;
+    private float groundSpawnTime = 6.9f / Global.Speed;
 
     private float backgroundSpawnTimer;
     private float backgroundSpawnTime = 28f / 1.5f;
@@ -94,10 +94,13 @@ public class Main : MonoBehaviour
         MorseMap.Add('Y', new List<int> { 1, 0, 1, 1 });
         MorseMap.Add('Z', new List<int> { 1, 1, 0, 0 });
         MorseMap.Add('\'', new List<int> { 0, 1, 1, 1, 1, 0 });
+        MorseMap.Add('.', new List<int> { 0, 1, 0, 1, 0, 1 });
+        MorseMap.Add(',', new List<int> { 1, 1, 0, 0, 1, 1 });
         MorseMap.Add('É', new List<int> { 0, 0, 1, 0, 0 });
         MorseMap.Add('È', new List<int> { 0, 1, 0, 0, 1 });
         MorseMap.Add('À', new List<int> { 0, 1, 1, 0, 1 });
         MorseMap.Add('Ù', new List<int> { 0, 0, 1 });
+        MorseMap.Add('Ç', new List<int> { 1, 0, 1, 0, 0 });
         MorseMap.Add('1', new List<int> { 0, 1, 1, 1, 1 });
         MorseMap.Add('2', new List<int> { 0, 0, 1, 1, 1 });
         MorseMap.Add('3', new List<int> { 0, 0, 0, 1, 1 });
@@ -116,8 +119,16 @@ public class Main : MonoBehaviour
         timer = time;
         ticktimer = time;
         tickCounter = 0;
-        currentText = text;
-        currentTextUI = text;
+        if (text.Length > 0)
+        {
+            currentText = text;
+            currentTextUI = text;
+        } else
+        {
+            currentText = Global.levelText;
+            currentTextUI = Global.levelText;
+        }
+        
         currentIndex = 0;
 
         audioSource = GetComponent<AudioSource>();
@@ -135,8 +146,8 @@ public class Main : MonoBehaviour
         backgroundSpawnTimer = 0;
         for (int i = 1; i < 3; i++)
         {
-            var obj2 = Instantiate(Resources.Load("Prefabs/BG_UL"), new Vector3(10 + spawnOffsetX - i * backgroundSpawnTime * 1.5f, 2, 0), Quaternion.identity);
-            Destroy(obj2, 50f);
+            var obj2 = Instantiate(Resources.Load("Prefabs/BG_UL"), new Vector3(15 + spawnOffsetX - i * backgroundSpawnTime * 1.5f, 2, 0), Quaternion.identity);
+            Destroy(obj2, 40f);
         }
     }
 
@@ -160,8 +171,8 @@ public class Main : MonoBehaviour
         if (backgroundSpawnTimer < 0)
         {
             backgroundSpawnTimer += backgroundSpawnTime;
-            var obj = Instantiate(Resources.Load("Prefabs/BG_UL"), new Vector3(10 + spawnOffsetX, 2, 0), Quaternion.identity);
-            Destroy(obj, 50f);
+            var obj = Instantiate(Resources.Load("Prefabs/BG_UL"), new Vector3(15 + spawnOffsetX, 2, 0), Quaternion.identity);
+            Destroy(obj, 40f);
         }
 
         //tick
@@ -273,7 +284,7 @@ public class Main : MonoBehaviour
 
                     if (currentText.Length > 0)
                     {
-                        if (currentText[0] == ' ' || currentText[0] == ',' || currentText[0] == '.')
+                        if (currentText[0] == ' ')
                         {
                             //InstantiateObject("Prefabs/Word", new Vector3(spawnOffsetX, 1, 0));
                             InstantiateObject("Prefabs/Circle2", new Vector3(spawnOffsetX + 1 * time * Global.Speed, 1.5f, 0));
@@ -317,49 +328,57 @@ public class Main : MonoBehaviour
 
 
         //text input
-
-        var inputstring = Input.inputString;
-        var inputchars = inputstring.ToCharArray();
-        foreach (char c in inputchars)
+        //uniquement en mode impro
+        if (text.Length == 0)
         {
-            var b = false;
-            var ponct = false;
-
-            if (c >= '0' && c <= '9')
+            var inputstring = Input.inputString;
+            var inputchars = inputstring.ToCharArray();
+            foreach (char c in inputchars)
             {
-                b = true;
-            }
+                var b = false;
+                var ponct = false;
 
-            if (c >= 'a' && c <= 'z')
-            {
-                b = true;
-            }
+                if (c >= '0' && c <= '9')
+                {
+                    b = true;
+                }
 
-            if (c >= 'A' && c <= 'Z')
-            {
-                b = true;
-            }
+                if (c >= 'a' && c <= 'z')
+                {
+                    b = true;
+                }
 
-            if (c == 'é' || c == 'è' || c == 'à' || c == 'ù')
-            {
-                b = true;
-            }
+                if (c >= 'A' && c <= 'Z')
+                {
+                    b = true;
+                }
 
-            if (c == 'É' || c == 'È' || c == 'À' || c == 'Ù')
-            {
-                b = true;
-            }
+                if (c == 'é' || c == 'è' || c == 'à' || c == 'ù' || c == 'ç')
+                {
+                    b = true;
+                }
 
-            if (c == ' ' || c == ',' || c == '.' || c == '\'')
-            {
-                b = true;
-                ponct = true;
-            }
+                if (c == 'É' || c == 'È' || c == 'À' || c == 'Ù' || c == 'Ç')
+                {
+                    b = true;
+                }
 
-            if (b && !(ponct && currentText.Length == 0))
-            {
-                currentText = currentText + c;
-                currentTextUI = currentTextUI + c;
+                if (c == ',' || c == '.' || c == '\'')
+                {
+                    b = true;
+                }
+
+                if (c == ' ')
+                {
+                    b = true;
+                    ponct = true;
+                }
+
+                if (b && !(ponct && currentText.Length == 0))
+                {
+                    currentText = currentText + c;
+                    currentTextUI = currentTextUI + c;
+                }
             }
         }
 
@@ -382,7 +401,10 @@ public class Main : MonoBehaviour
             text1 = currentTextUI;
         }
 
-        textui.GetComponent<Text>().text = "<color=#ff0000ff>" + text1 + "</color>" + text2;
+        if (textui != null)
+        {
+            textui.GetComponent<Text>().text = "<color=#ff0000ff>" + text1 + "</color>" + text2;
+        }
     }
 
     private void Generate(string text, int index)
@@ -446,5 +468,11 @@ public class Main : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         currentTextUI = currentTextUI.Substring(1, currentTextUI.Length - 1);
+    }
+
+    public void SetCurrentText(string text)
+    {
+        currentText = text;
+        currentTextUI = text;
     }
 }

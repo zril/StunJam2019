@@ -69,7 +69,7 @@ public class Collider : MonoBehaviour
                 if (!(collider.gameObject.tag == "Letter" && collider.gameObject.GetComponent<Animator>().GetBool("destroy")))
                 {
                     combo = 0;
-                    multiplier = 1;
+                    multiplier = Mathf.CeilToInt((float)multiplier / 2f);
                     powerCounter--;
                     if (powerCounter < 0)
                     {

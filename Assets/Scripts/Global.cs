@@ -7,5 +7,7 @@ using System.Threading.Tasks;
 
 public class Global
 {
-    public static float Speed = 3f;
+    public static float Speed = 4f;
+
+    public static string levelText = "";
 }
