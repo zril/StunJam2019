@@ -168,11 +168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: a
   bpm: 240
-  shortmorse: {fileID: 8300000, guid: a41ade8b6a0f7ab42b9c5b36abec11eb, type: 3}
-  longmorse: {fileID: 8300000, guid: 719970ac7e5b65447bb7a237246f51fb, type: 3}
-  letter: {fileID: 8300000, guid: 1a93d46c5cd0fb64ca60b1247d7781c1, type: 3}
-  word: {fileID: 8300000, guid: 25832aa9088af6749bf9afa3933992e7, type: 3}
-  tick1: {fileID: 8300000, guid: df5b0795663a99447a9179bba45a6acc, type: 3}
+  shortmorse: {fileID: 8300000, guid: 49132027d052a1e43b2f78e75d994ad6, type: 3}
+  longmorse: {fileID: 8300000, guid: 9e6ca688178aa8346a8bc0dff7420b22, type: 3}
+  letter: {fileID: 8300000, guid: 3aac84fb327118b4e95a0ccf4717b057, type: 3}
+  word: {fileID: 8300000, guid: c54ebf4490c7f6247b9813adf8927a01, type: 3}
+  tick1: {fileID: 8300000, guid: 41776c61289a069419fcda1187d164b6, type: 3}
   tick1_bis: {fileID: 0}
   tick2: {fileID: 0}
   tick2_bis: {fileID: 0}
@@ -180,21 +180,21 @@ MonoBehaviour:
   tick6: {fileID: 0}
   tick4: {fileID: 0}
   tick4_bis: {fileID: 0}
-  tick41: {fileID: 8300000, guid: c6a440c85e02b3b499c6031e349f8cd1, type: 3}
+  tick41: {fileID: 8300000, guid: 6884dd760c7aa624e860bf28c1ad4c7c, type: 3}
   tick41_bis: {fileID: 0}
   tick42: {fileID: 0}
   tick42_bis: {fileID: 0}
-  tick43: {fileID: 8300000, guid: c19f7235b8d3c3d44b2c6153fa1eaf57, type: 3}
+  tick43: {fileID: 8300000, guid: b569b47833d646943af1353a9db3c243, type: 3}
   tick43_bis: {fileID: 0}
-  tick84: {fileID: 8300000, guid: bb5cda01a1003bc46aa7573816bf346e, type: 3}
+  tick84: {fileID: 8300000, guid: 02c30c981efd9364bb49d9e6ce6744dc, type: 3}
   tick85: {fileID: 0}
   tick86: {fileID: 0}
-  tick87: {fileID: 8300000, guid: 852099df9705cc64487df7acfad5fdb3, type: 3}
-  hit: {fileID: 8300000, guid: 935214f79cc464d4e853bcd289a6f17e, type: 3}
-  jump: {fileID: 8300000, guid: 67a8f01a6456a7b438ad623a74a75457, type: 3}
-  smash: {fileID: 8300000, guid: f2c7be473b5b029468db0b21fef28e7c, type: 3}
-  destroy: {fileID: 8300000, guid: b4469ade9201fb54cb550a1b957cfcfb, type: 3}
-  bonus: {fileID: 8300000, guid: 6c13c16c3178543498c12849e0d19e47, type: 3}
+  tick87: {fileID: 8300000, guid: 7d71007353972cc4a986d612ab852e83, type: 3}
+  hit: {fileID: 8300000, guid: 28d1efee3eb7f9344802b2ae9b64a560, type: 3}
+  jump: {fileID: 8300000, guid: 86064013b98c9fa4ab2e1f032f31b7aa, type: 3}
+  smash: {fileID: 8300000, guid: 2dc2e669261b5dd40a773f153ab7777d, type: 3}
+  destroy: {fileID: 8300000, guid: b006181381936b74db484a7fd99904a6, type: 3}
+  bonus: {fileID: 8300000, guid: 2cb4be5c8e2587b46b72f09f881adbbe, type: 3}
   power: {fileID: 0}
 --- !u!20 &519420031
 Camera:
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.5613208, g: 1, b: 0.95564497, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
