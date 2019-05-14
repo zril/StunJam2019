@@ -17,8 +17,7 @@ public class Player : MonoBehaviour
     private float smashTimer;
     private float rollTimer;
     private float smashTime = 0.25f;
-    //private float rollTime = 0.4f;
-    private float rollTime = 0.0f;
+    private float rollTime = 0.25f;
     private bool smashing = false;
     private bool rolling = false;
 
@@ -44,7 +43,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //jump
-        if (Input.GetButtonDown("Button1") && onGround && !rolling && !smashing)
+        if (Input.GetButtonDown("Button1") && onGround && !smashing)
         {
             onGround = false;
             jumpTimer = 0;
@@ -56,7 +55,7 @@ public class Player : MonoBehaviour
             audiosource.PlayOneShot(clip);
         }
 
-        if (Input.GetButton("Button1") && onGround && !rolling && !smashing)
+        if (Input.GetButton("Button1") && onGround && !smashing)
         {
             onGround = false;
             jumpTimer = 0;
@@ -81,7 +80,7 @@ public class Player : MonoBehaviour
         }
 
         //smash
-        if (Input.GetButtonDown("Button2") && !smashing)
+        if (Input.GetButton("Button2") && !smashing && !rolling)
         {
             smashTimer = smashTime;
             smashing = true;
