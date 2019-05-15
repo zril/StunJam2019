@@ -12,9 +12,14 @@ public class Menu : MonoBehaviour
     private float nomireTimer;
     private bool lockInput;
 
+    private bool initTitle;
+
     private int levelIndex;
 
     private string[,] levels;
+
+
+    private GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +30,7 @@ public class Menu : MonoBehaviour
         main = gameObject.GetComponent<Main>();
 
         lockInput = false;
+        initTitle = false;
 
         levelIndex = 0;
 
@@ -35,6 +41,13 @@ public class Menu : MonoBehaviour
             { "Tutorial", "blablabla" },
             { "2 players", "Use your keyboard" } };
 
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+
+        for (int i = 0; i <4; i++)
+        {
+            canvas.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
         UpdateUI();
     }
 
@@ -43,55 +56,69 @@ public class Menu : MonoBehaviour
     {
         nomireTimer += Time.deltaTime;
 
-        var nomireTime = 35f;
+        var nomireTime = 30f;
         if (nomireTimer > nomireTime)
         {
             main.SetCurrentText("nomire");
             nomireTimer -= nomireTime;
         }
 
-        if (!lockInput)
+        if (!initTitle && Input.anyKeyDown)
         {
-            if (Input.GetAxis("Vertical") < 0)
+            for (int i = 0; i < 4; i++)
             {
-                levelIndex++;
-                if (levelIndex >= levels.GetLength(0))
-                {
-                    levelIndex = levels.GetLength(0) - 1;
-                }
-                lockInput = true;
-                UpdateUI();
+                canvas.transform.GetChild(i).gameObject.SetActive(true);
             }
-
-            if (Input.GetAxis("Vertical") > 0)
-            {
-                levelIndex--;
-                if (levelIndex < 0)
-                {
-                    levelIndex = 0;
-                }
-                lockInput = true;
-                UpdateUI();
-            }
-        } else
-        {
-            if (Input.GetAxis("Vertical") == 0)
-            {
-                lockInput = false;
-            }
+            canvas.transform.GetChild(4).gameObject.SetActive(false);
+            initTitle = true;
         }
 
-        if (Input.GetButtonDown("Button2"))
+        if (initTitle)
         {
-            if (levelIndex < levels.GetLength(0) - 1)
+            if (!lockInput)
             {
-                Global.levelText = levels[levelIndex, 1];
+                if (Input.GetAxis("Vertical") < 0)
+                {
+                    levelIndex++;
+                    if (levelIndex >= levels.GetLength(0))
+                    {
+                        levelIndex = levels.GetLength(0) - 1;
+                    }
+                    lockInput = true;
+                    UpdateUI();
+                }
+
+                if (Input.GetAxis("Vertical") > 0)
+                {
+                    levelIndex--;
+                    if (levelIndex < 0)
+                    {
+                        levelIndex = 0;
+                    }
+                    lockInput = true;
+                    UpdateUI();
+                }
             } else
             {
-                Global.levelText = "";
+                if (Input.GetAxis("Vertical") == 0)
+                {
+                    lockInput = false;
+                }
             }
 
-            SceneManager.LoadScene(1);
+            if (Input.GetButtonDown("Button2"))
+            {
+                if (levelIndex < levels.GetLength(0) - 1)
+                {
+                    Global.levelText = levels[levelIndex, 1];
+                } else
+                {
+                    Global.levelText = "";
+                }
+
+                SceneManager.LoadScene(1);
+             }
+
         }
 
     }
@@ -122,15 +149,11 @@ public class Menu : MonoBehaviour
 
     private void SetChoix(int choix, string text)
     {
-        var canvas = GameObject.FindGameObjectWithTag("Canvas");
-
         canvas.transform.GetChild(choix).GetChild(0).GetComponent<Text>().text = text;
     }
 
     private void SetPreview(string text)
     {
-        var canvas = GameObject.FindGameObjectWithTag("Canvas");
-
         canvas.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = text;
     }
 }
