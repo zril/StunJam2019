@@ -101,8 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: 
   bpm: 240
-  shortmorse: {fileID: 8300000, guid: 2d71e2e4864b64548b52b90be85b00d9, type: 3}
-  longmorse: {fileID: 8300000, guid: 189e3ae9db49d14479e57639b1480681, type: 3}
+  shortmorse: {fileID: 8300000, guid: dc387f74fed84a34abca2d0d5440e075, type: 3}
+  longmorse: {fileID: 8300000, guid: de0f3a4364fce43468f31ec04a8f1157, type: 3}
   letter: {fileID: 8300000, guid: 3aac84fb327118b4e95a0ccf4717b057, type: 3}
   word: {fileID: 8300000, guid: c54ebf4490c7f6247b9813adf8927a01, type: 3}
   tick1: {fileID: 8300000, guid: 41776c61289a069419fcda1187d164b6, type: 3}
@@ -119,12 +119,12 @@ MonoBehaviour:
   tick42_bis: {fileID: 0}
   tick43: {fileID: 8300000, guid: b569b47833d646943af1353a9db3c243, type: 3}
   tick43_bis: {fileID: 0}
-  tick84: {fileID: 8300000, guid: 02c30c981efd9364bb49d9e6ce6744dc, type: 3}
-  tick85: {fileID: 0}
+  tick84: {fileID: 8300000, guid: 6aba567d53197294c9a196fcd76044d5, type: 3}
+  tick85: {fileID: 8300000, guid: 7d2a047c63a94334eb2842f233868a9d, type: 3}
   tick86: {fileID: 0}
-  tick87: {fileID: 8300000, guid: 7d71007353972cc4a986d612ab852e83, type: 3}
+  tick87: {fileID: 0}
   hit: {fileID: 8300000, guid: 28d1efee3eb7f9344802b2ae9b64a560, type: 3}
-  jump: {fileID: 8300000, guid: 86064013b98c9fa4ab2e1f032f31b7aa, type: 3}
+  jump: {fileID: 8300000, guid: cad8eb2f36d6f79439d1a79ad4353a13, type: 3}
   smash: {fileID: 8300000, guid: 2dc2e669261b5dd40a773f153ab7777d, type: 3}
   destroy: {fileID: 8300000, guid: b006181381936b74db484a7fd99904a6, type: 3}
   bonus: {fileID: 8300000, guid: 2cb4be5c8e2587b46b72f09f881adbbe, type: 3}
