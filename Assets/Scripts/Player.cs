@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -91,7 +92,7 @@ public class Player : MonoBehaviour
             var clip = maincamera.GetComponent<Main>().smash;
             audiosource.PlayOneShot(clip);
         }
-        
+
         if (smashing)
         {
             smashTimer -= Time.fixedDeltaTime;
@@ -117,6 +118,11 @@ public class Player : MonoBehaviour
             }
         }
 
+        //reset
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
