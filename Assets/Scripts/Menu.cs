@@ -35,7 +35,7 @@ public class Menu : MonoBehaviour
         levelIndex = 0;
 
         levels = new string[,] {
-            { "test", "gzetg" },
+            { "test", "tessssssssssssssssssssssssssssssssssssssssssssssssssst" },
             { "test2", "ghzthzth zzetg" },
             { "test3", "gthr ztzt" },
             { "Tutorial", "blablabla" },
@@ -61,16 +61,6 @@ public class Menu : MonoBehaviour
         {
             main.SetCurrentText("nomire");
             nomireTimer -= nomireTime;
-        }
-
-        if (!initTitle && Input.anyKeyDown)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                canvas.transform.GetChild(i).gameObject.SetActive(true);
-            }
-            canvas.transform.GetChild(4).gameObject.SetActive(false);
-            initTitle = true;
         }
 
         if (initTitle)
@@ -118,7 +108,16 @@ public class Menu : MonoBehaviour
 
                 SceneManager.LoadScene(1);
              }
+        }
 
+        if (!initTitle && Input.anyKeyDown)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                canvas.transform.GetChild(i).gameObject.SetActive(true);
+            }
+            canvas.transform.GetChild(4).gameObject.SetActive(false);
+            initTitle = true;
         }
 
     }
@@ -134,7 +133,15 @@ public class Menu : MonoBehaviour
         }
 
         SetChoix(1, levels[levelIndex, 0]);
-        SetPreview(levels[levelIndex, 1]);
+        var preview = levels[levelIndex, 1];
+        var maxlength = 35;
+        if (preview.Length > maxlength)
+        {
+            SetPreview(preview.Substring(0, maxlength) + "…");
+        } else
+        {
+            SetPreview(preview);
+        }
 
         if (levelIndex < levels.GetLength(0) - 1)
         {
