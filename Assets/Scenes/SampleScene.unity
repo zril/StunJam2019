@@ -1135,12 +1135,12 @@ PrefabInstance:
         type: 3}
       propertyPath: shortmorse
       value: 
-      objectReference: {fileID: 8300000, guid: 2d71e2e4864b64548b52b90be85b00d9, type: 3}
+      objectReference: {fileID: 8300000, guid: dc387f74fed84a34abca2d0d5440e075, type: 3}
     - target: {fileID: 6671338551768573070, guid: e7c6a4fde37e6d445b526ecf16c7c96b,
         type: 3}
       propertyPath: longmorse
       value: 
-      objectReference: {fileID: 8300000, guid: 189e3ae9db49d14479e57639b1480681, type: 3}
+      objectReference: {fileID: 8300000, guid: de0f3a4364fce43468f31ec04a8f1157, type: 3}
     - target: {fileID: 6671338551768573070, guid: e7c6a4fde37e6d445b526ecf16c7c96b,
         type: 3}
       propertyPath: letter
@@ -1170,12 +1170,12 @@ PrefabInstance:
         type: 3}
       propertyPath: tick84
       value: 
-      objectReference: {fileID: 8300000, guid: 02c30c981efd9364bb49d9e6ce6744dc, type: 3}
+      objectReference: {fileID: 8300000, guid: 6aba567d53197294c9a196fcd76044d5, type: 3}
     - target: {fileID: 6671338551768573070, guid: e7c6a4fde37e6d445b526ecf16c7c96b,
         type: 3}
       propertyPath: tick87
       value: 
-      objectReference: {fileID: 8300000, guid: 7d71007353972cc4a986d612ab852e83, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6671338551768573070, guid: e7c6a4fde37e6d445b526ecf16c7c96b,
         type: 3}
       propertyPath: hit
@@ -1185,7 +1185,7 @@ PrefabInstance:
         type: 3}
       propertyPath: jump
       value: 
-      objectReference: {fileID: 8300000, guid: 86064013b98c9fa4ab2e1f032f31b7aa, type: 3}
+      objectReference: {fileID: 8300000, guid: cad8eb2f36d6f79439d1a79ad4353a13, type: 3}
     - target: {fileID: 6671338551768573070, guid: e7c6a4fde37e6d445b526ecf16c7c96b,
         type: 3}
       propertyPath: smash
@@ -1201,5 +1201,20 @@ PrefabInstance:
       propertyPath: bonus
       value: 
       objectReference: {fileID: 8300000, guid: 2cb4be5c8e2587b46b72f09f881adbbe, type: 3}
+    - target: {fileID: 6671338551768573070, guid: e7c6a4fde37e6d445b526ecf16c7c96b,
+        type: 3}
+      propertyPath: tick86
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671338551768573070, guid: e7c6a4fde37e6d445b526ecf16c7c96b,
+        type: 3}
+      propertyPath: tick85
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d2a047c63a94334eb2842f233868a9d, type: 3}
+    - target: {fileID: 6671338551768573070, guid: e7c6a4fde37e6d445b526ecf16c7c96b,
+        type: 3}
+      propertyPath: bpm
+      value: 240
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c6a4fde37e6d445b526ecf16c7c96b, type: 3}
