@@ -121,6 +121,7 @@ public class Player : MonoBehaviour
         //reset
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Global.levelText = "title";
             SceneManager.LoadScene(0);
         }
     }

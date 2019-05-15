@@ -24,13 +24,26 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Global.levelText = "title";
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
 
         nomireTimer = 0;
         main = gameObject.GetComponent<Main>();
 
         lockInput = false;
-        initTitle = false;
+
+        if (Global.levelText == "select")
+        {
+            Debug.Log("select");
+            canvas.transform.GetChild(4).gameObject.SetActive(false);
+            initTitle = true;
+        } else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                canvas.transform.GetChild(i).gameObject.SetActive(false);
+            }
+            initTitle = false;
+        }
 
         levelIndex = 0;
 
@@ -39,12 +52,7 @@ public class Menu : MonoBehaviour
 			{ "Controles", "UP ou A pour Sauter. RIGHT ou X pour Frapper." },
             { "2 joueurs", "Joueur 1 au clavier et Joueur 2 à la manette" } };
 
-        canvas = GameObject.FindGameObjectWithTag("Canvas");
-
-        for (int i = 0; i <4; i++)
-        {
-            canvas.transform.GetChild(i).gameObject.SetActive(false);
-        }
+        
 
         UpdateUI();
     }
@@ -116,6 +124,13 @@ public class Menu : MonoBehaviour
             }
             canvas.transform.GetChild(4).gameObject.SetActive(false);
             initTitle = true;
+        }
+
+        //reset
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Global.levelText = "title";
+            SceneManager.LoadScene(0);
         }
 
     }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Main : MonoBehaviour
@@ -61,6 +62,8 @@ public class Main : MonoBehaviour
 
     private float backgroundSpawnTimer;
     private float backgroundSpawnTime = 28f / 1.5f;
+
+    private int backToMenuCounter = 0;
 
 
     // Start is called before the first frame update
@@ -321,8 +324,14 @@ public class Main : MonoBehaviour
             } else
             {
                 //InstantiateObject("Prefabs/Void", new Vector3(spawnOffsetX, 1, 0));
+                backToMenuCounter++;
+                if (backToMenuCounter > 10 && Global.levelText.Length > 0 && Global.levelText != "title" && Global.levelText != "select")
+                {
+                    Global.levelText = "select";
+                    SceneManager.LoadScene(0);
+                }
 
-                timer += 6 * time;
+                timer += 4 * time;
             }
         }
 

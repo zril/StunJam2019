@@ -9,5 +9,5 @@ public class Global
 {
     public static float Speed = 4f;
 
-    public static string levelText = "";
+    public static string levelText = "title";
 }
