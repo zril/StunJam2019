@@ -329,7 +329,7 @@ public class Main : MonoBehaviour
 
         //text input
         //uniquement en mode impro
-        if (text.Length == 0)
+        if (Global.levelText.Length == 0)
         {
             var inputstring = Input.inputString;
             var inputchars = inputstring.ToCharArray();

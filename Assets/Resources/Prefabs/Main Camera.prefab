@@ -127,7 +127,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: cad8eb2f36d6f79439d1a79ad4353a13, type: 3}
   smash: {fileID: 8300000, guid: 2dc2e669261b5dd40a773f153ab7777d, type: 3}
   destroy: {fileID: 8300000, guid: b006181381936b74db484a7fd99904a6, type: 3}
-  bonus: {fileID: 8300000, guid: 2cb4be5c8e2587b46b72f09f881adbbe, type: 3}
+  bonus: {fileID: 8300000, guid: 36eef4c175767f547a69b49a50a6a39f, type: 3}
   power: {fileID: 0}
 --- !u!82 &6671338551768573041
 AudioSource:
