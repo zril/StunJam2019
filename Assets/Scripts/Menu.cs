@@ -48,9 +48,8 @@ public class Menu : MonoBehaviour
         levelIndex = 0;
 
         levels = new string[,] {
-            { "Tutoriel", "Aidez la mire de calibrage à convertir le texte en code MORSE déstiné aux millions d'usagers désireux de faire savoir à leurs proches les nouvelles essentielles de leurs vies, sans les inconvénients de temps et d'argent qu'impliquent l'emploi d'un messager, et parce que ça rapporte des POINTS. SAUTEZ par dessus les arcs électrostatiques résiduels et détruisez les écrans plats. Ces derniers renferment un pouvoir multimédiatique sans commune mesure, augmentant ainsi votre multiplicateur de SCORE de façon significative. Si le multiplicateur est rempli, vous passez en mode SUPER PLAY, vous devrez alors mettre en oeuvre tout ce que ce TUTORIEL vous aura appris sur le MORSE pour braver la cécité gratifiante. La fonctionnalité de HIGH SCORE ainsi que le mode VR seront disponibles dans de prochains DLC, en attendant n'hésitez pas à écrire votre HIGH SCORE sur un POST IT et à le COLLER sur l'écran." },
-			{ "Controles", "UP ou A pour Sauter. RIGHT ou X pour Frapper." },
-			{ "Newbie", "SOS. SOS. SOS. SOS. SOS. SOS. SOS. SOS. SOS." },
+            { "Controles", "A pour Sauter. X pour Frapper." },
+            { "Newbie", "SOS. SOS. SOS. SOS. SOS. SOS. SOS. SOS. SOS." },
 			{ "Niveau 2", "a aa e ee i ii o oo u uu y yy" },
 			{ "Niveau 3", "tati titati titotiteta titotetitatu tu tu" },
 			{ "Sonic", "It's me, Mario" },
@@ -61,7 +60,8 @@ public class Menu : MonoBehaviour
 			{ "Latin", "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
 			{ "Camarade", "Ami, entends tu le vol noir des corbeaux sur nos plaines" },
 			{ "Coiffeur", "Belle journée. On a du mal à croire qu'on est en mai." },
-			{ "2 joueurs", "Joueur 1 au clavier et Joueur 2 à la manette" } };
+            { "Tutoriel", "Aidez la mire de calibrage à convertir le texte en code MORSE déstiné aux millions d'usagers désireux de faire savoir à leurs proches les nouvelles essentielles de leurs vies, sans les inconvénients de temps et d'argent qu'impliquent l'emploi d'un messager, et parce que ça rapporte des POINTS. SAUTEZ par dessus les arcs électrostatiques résiduels et détruisez les écrans plats. Ces derniers renferment un pouvoir multimédiatique sans commune mesure, augmentant ainsi votre multiplicateur de SCORE de façon significative. Si le multiplicateur est rempli, vous passez en mode SUPER PLAY, vous devrez alors mettre en oeuvre tout ce que ce TUTORIEL vous aura appris sur le MORSE pour braver la cécité gratifiante. La fonctionnalité de HIGH SCORE ainsi que le mode VR seront disponibles dans de prochains DLC, en attendant n'hésitez pas à écrire votre HIGH SCORE sur un POST IT et à le COLLER sur l'écran." },
+            { "2 joueurs", "Utilisez le clavier pour improviser le texte" } };
 
         
 
